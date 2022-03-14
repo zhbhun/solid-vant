@@ -1,0 +1,26 @@
+.demo-button {
+  background: var(--van-background-color-light);
+
+  .van-button {
+    &--large {
+      margin-bottom: var(--van-padding-md);
+    }
+
+    &--small,
+    &--normal:not(:last-child) {
+      margin-right: var(--van-padding-md);
+    }
+  }
+
+  .van-doc-demo-block {
+    padding: 0 var(--van-padding-md);
+  }
+
+  .van-doc-demo-block__title {
+    padding-left: 0;
+  }
+
+  &-row {
+    margin-bottom: var(--van-padding-sm);
+  }
+}

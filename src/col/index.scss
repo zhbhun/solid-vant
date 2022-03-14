@@ -1,0 +1,19 @@
+.van-col {
+  display: block;
+  box-sizing: border-box;
+  min-height: 1px;
+}
+
+@mixin generate-col($n) {
+  @for $i from 1 through $n {
+    .van-col--#{$i} {
+      flex: 0 0 $i * (100% / 24);
+      max-width: $i * (100% / 24);
+    }
+    .van-col--offset-#{$i} {
+      margin-left: $i * (100% / 24);
+    }
+  }
+}
+
+@include generate-col(24);

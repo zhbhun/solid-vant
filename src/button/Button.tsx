@@ -1,24 +1,18 @@
-import type { Component } from "solid-js";
-import { createMemo, mergeProps } from "solid-js";
+import type { Component, JSX } from "solid-js";
+import { createMemo, mergeProps, splitProps } from "solid-js";
 import { Dynamic, Show } from "solid-js/web";
+import classNames from "classnames";
 
 import { LoadingType } from "../loading";
-import { preventDefault } from "../utils/dom";
+import { callEventHandler, createNamespace, preventDefault } from "../utils";
+import {
+  ButtonType,
+  ButtonSize,
+  ButtonIconPosition,
+  ButtonNativeType,
+} from "./types";
 
-export type ButtonType =
-  | "default"
-  | "primary"
-  | "success"
-  | "warning"
-  | "danger";
-
-export type ButtonSize = "large" | "normal" | "small" | "mini";
-
-export type ButtonNativeType = "submit" | "reset" | "button";
-
-export type ButtonIconPosition = "left" | "right";
-
-export interface ButtonProps {
+export interface ButtonProps extends JSX.HTMLAttributes<any> {
   /** HTML Tag */
   tag?: keyof HTMLElementTagNameMap;
   /** Text */
@@ -56,8 +50,6 @@ export interface ButtonProps {
   loadingType?: LoadingType;
   /** Icon position, can be set to right */
   iconPosition?: ButtonIconPosition;
-  /** Emitted when button is clicked and not disabled or loading */
-  onClick?: (event: MouseEvent) => void;
 }
 
 export const defaultButtonProps: ButtonProps = {
@@ -68,15 +60,57 @@ export const defaultButtonProps: ButtonProps = {
   iconPosition: "left",
 };
 
-const Button: Component<ButtonProps> = (props) => {
-  const _props = mergeProps(defaultButtonProps, props);
+const [name, bem] = createNamespace("button");
+
+export const Button: Component<ButtonProps> = (props) => {
+  const [_props, attrs] = splitProps(mergeProps(defaultButtonProps, props), [
+    "tag",
+    "text",
+    "icon",
+    "type",
+    "size",
+    "color",
+    "block",
+    "plain",
+    "round",
+    "square",
+    "loading",
+    "hairline",
+    "disabled",
+    "iconPrefix",
+    "nativeType",
+    "loadingSize",
+    "loadingText",
+    "loadingType",
+    "iconPosition",
+  ]);
+
   const onClick = (event: MouseEvent) => {
     if (_props.loading) {
       preventDefault(event);
     } else if (!_props.disabled) {
-      _props.onClick?.(event);
+      callEventHandler(attrs.onClick || attrs.onclick, event);
     }
   };
+  const classes = createMemo(() => {
+    return classNames(
+      bem([
+        _props.type,
+        _props.size,
+        {
+          plain: _props.plain,
+          block: _props.block,
+          round: _props.round,
+          square: _props.square,
+          loading: _props.loading,
+          disabled: _props.disabled,
+          hairline: _props.hairline,
+        },
+      ]),
+      attrs.class,
+      attrs.className
+    );
+  });
   const icon = createMemo(() => {
     if (_props.loading) {
       return "...";
@@ -96,13 +130,15 @@ const Button: Component<ButtonProps> = (props) => {
     if (_props.loading) {
       text = _props.loadingText;
     } else {
-      text = _props.children ? _props.children : _props.text;
+      text = attrs.children ? attrs.children : _props.text;
     }
     return text;
   });
   return (
     <Dynamic
+      {...attrs}
       component={_props.tag}
+      class={classes()}
       disabled={_props.disabled}
       onClick={onClick}
     >
