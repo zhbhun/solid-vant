@@ -1,5 +1,6 @@
 export * from './badge';
 export * from './button';
+export * from './config-provider';
 export * from './col';
 export * from './icon';
 export * from './image';
