@@ -21,7 +21,7 @@ const t = useTranslate({
   },
 });
 
-const ButtonExample: Component = () => {
+const BadgeExample: Component = () => {
   return (
     <div class="demo-badge">
       <DemoBlock title={t("basicUsage")}>
@@ -95,4 +95,4 @@ const ButtonExample: Component = () => {
   );
 };
 
-export default ButtonExample;
+export default BadgeExample;

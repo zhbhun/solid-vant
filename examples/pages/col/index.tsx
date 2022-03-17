@@ -15,7 +15,7 @@ const t = useTranslate({
   },
 });
 
-const ButtonExample: Component = () => {
+const ColExample: Component = () => {
   return (
     <div class="demo-col">
       <DemoBlock>
@@ -78,4 +78,4 @@ const ButtonExample: Component = () => {
   );
 };
 
-export default ButtonExample;
+export default ColExample;

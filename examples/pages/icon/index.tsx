@@ -87,7 +87,7 @@ const t = useTranslate({
 const demoIcon = 'chat-o';
 const demoImage = 'https://b.yzcdn.cn/vant/icon-demo-1126.png';
 
-const ButtonExample: Component = () => {
+const IconExample: Component = () => {
   const handleCopy = (
     [icon, option]: [string, Record<string, unknown>],
     event: MouseEvent
@@ -190,4 +190,4 @@ const ButtonExample: Component = () => {
   );
 };
 
-export default ButtonExample;
+export default IconExample;

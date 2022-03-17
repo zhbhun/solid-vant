@@ -3,12 +3,12 @@ import type { Component, JSX } from 'solid-js';
 import { mergeProps, splitProps } from 'solid-js';
 import { Show } from 'solid-js/web';
 import { addUnit, createNamespace, mergeStyles } from '../utils';
-import { Badge, BadgeProps, defaultBadgeProps } from '../badge';
+import { Badge, BadgeProps } from '../badge';
 
 export interface IconProps extends JSX.HTMLAttributes<any> {
   tag?: keyof HTMLElementTagNameMap;
   dot?: boolean;
-  badge?: JSX.Element,
+  badge?: JSX.Element;
   name: string;
   color?: string;
   size?: number | string;
@@ -24,7 +24,7 @@ const isImage = (name?: string) => name?.includes('/');
 const [name, bem] = createNamespace('icon');
 
 export const Icon: Component<IconProps> = (props) => {
-  const [_props, attrs] = splitProps(mergeProps(defaultBadgeProps, props), [
+  const [_props, attrs] = splitProps(mergeProps(defaultIconProps, props), [
     'tag',
     'badge',
     'name',
