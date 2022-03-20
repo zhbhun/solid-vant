@@ -3,12 +3,12 @@ import { createMemo, mergeProps, splitProps } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { kebabCase, mergeStyles } from '../utils';
 
-export interface ImageProps extends JSX.HTMLAttributes<any> {
+export interface ConfigProviderProps extends JSX.HTMLAttributes<any> {
   tag?: string;
   themeVars?: Record<string, string | number>;
 }
 
-export const defaultImageProps = {
+export const defaultConfigProviderProps = {
   tag: 'div',
 };
 
@@ -20,14 +20,14 @@ function mapThemeVarsToCSSVars(themeVars: Record<string, string | number>) {
   return cssVars;
 }
 
-export const ConfigProvider: Component<ImageProps> = (props) => {
-  const [_props, attrs] = splitProps(mergeProps(defaultImageProps, props), [
-    'tag',
-    'themeVars',
-  ]);
-  const style = createMemo<JSX.CSSProperties>(() => {
+export const ConfigProvider: Component<ConfigProviderProps> = (props) => {
+  const [_props, attrs] = splitProps(
+    mergeProps(defaultConfigProviderProps, props),
+    ['tag', 'themeVars']
+  );
+  const style = createMemo(() => {
     if (_props.themeVars) {
-      return mergeStyles(mapThemeVarsToCSSVars(props.themeVars), attrs.style);
+      return mergeStyles(mapThemeVarsToCSSVars(_props.themeVars), attrs.style);
     }
     return undefined;
   });

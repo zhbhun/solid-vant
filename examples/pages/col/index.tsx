@@ -48,32 +48,31 @@ const ColExample: Component = () => {
         </Row>
       </DemoBlock>
 
+      <DemoBlock title={t('justify')}>
+        <Row justify="center">
+          <Col span={6}>span: 6</Col>
+          <Col span={6}>span: 6</Col>
+          <Col span={6}>span: 6</Col>
+        </Row>
 
-  <DemoBlock title={t('justify')}>
-  <Row justify="center">
-    <Col span={6}>span: 6</Col>
-    <Col span={6}>span: 6</Col>
-    <Col span={6}>span: 6</Col>
-  </Row>
+        <Row justify="end">
+          <Col span={6}>span: 6</Col>
+          <Col span={6}>span: 6</Col>
+          <Col span={6}>span: 6</Col>
+        </Row>
 
-  <Row justify="end">
-    <Col span={6}>span: 6</Col>
-    <Col span={6}>span: 6</Col>
-    <Col span={6}>span: 6</Col>
-  </Row>
+        <Row justify="space-between">
+          <Col span={6}>span: 6</Col>
+          <Col span={6}>span: 6</Col>
+          <Col span={6}>span: 6</Col>
+        </Row>
 
-  <Row justify="space-between">
-    <Col span={6}>span: 6</Col>
-    <Col span={6}>span: 6</Col>
-    <Col span={6}>span: 6</Col>
-  </Row>
-
-  <Row justify="space-around">
-    <Col span={6}>span: 6</Col>
-    <Col span={6}>span: 6</Col>
-    <Col span={6}>span: 6</Col>
-  </Row>
-</DemoBlock>
+        <Row justify="space-around">
+          <Col span={6}>span: 6</Col>
+          <Col span={6}>span: 6</Col>
+          <Col span={6}>span: 6</Col>
+        </Row>
+      </DemoBlock>
     </div>
   );
 };

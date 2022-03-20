@@ -4,7 +4,7 @@ export * from './dom';
 export * from './create';
 export * from './format';
 export * from './style';
-// export * from './constant';
+export * from './constant';
 export * from './validate';
 // export * from './interceptor';
 // export * from './with-install';
