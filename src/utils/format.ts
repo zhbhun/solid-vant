@@ -1,3 +1,4 @@
+import { type JSX } from 'solid-js';
 import { isDef, isNumeric } from './validate';
 
 export function addUnit(value?: string | number): string | undefined {
@@ -5,6 +6,14 @@ export function addUnit(value?: string | number): string | undefined {
     return isNumeric(value) ? `${value}px` : String(value);
   }
   return undefined;
+}
+
+export function getZIndexStyle(zIndex?: string | number) {
+  const style: JSX.CSSProperties = {};
+  if (zIndex !== undefined) {
+    style.zIndex = +zIndex;
+  }
+  return style;
 }
 
 // cache

@@ -9,6 +9,7 @@ const ConfigProviderExample = lazy(() => import("./pages/config-provider"));
 const ColExample = lazy(() => import("./pages/col"));
 const IconExample = lazy(() => import("./pages/icon"));
 const ImageExample = lazy(() => import("./pages/image"));
+const OverlayExample = lazy(() => import("./pages/overlay"));
 const StyleExample = lazy(() => import("./pages/style"));
 
 const App: Component = () => {
@@ -21,6 +22,7 @@ const App: Component = () => {
       <Route path="/col" element={<ColExample />} />
       <Route path="/icon" element={<IconExample />} />
       <Route path="/image" element={<ImageExample />} />
+      <Route path="/overlay" element={<OverlayExample />} />
       <Route path="/style" element={<StyleExample />} />
     </Routes>
   );

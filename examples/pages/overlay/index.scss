@@ -1,0 +1,17 @@
+.demo-overlay {
+  background: var(--van-background-color-light);
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .block {
+    width: 120px;
+    height: 120px;
+    background-color: var(--van-background-color-light);
+    border-radius: 4px;
+  }
+}
