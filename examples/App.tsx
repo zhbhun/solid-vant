@@ -10,6 +10,7 @@ const ColExample = lazy(() => import("./pages/col"));
 const IconExample = lazy(() => import("./pages/icon"));
 const ImageExample = lazy(() => import("./pages/image"));
 const OverlayExample = lazy(() => import("./pages/overlay"));
+const PopupExample = lazy(() => import("./pages/popup"));
 const StyleExample = lazy(() => import("./pages/style"));
 
 const App: Component = () => {
@@ -23,6 +24,7 @@ const App: Component = () => {
       <Route path="/icon" element={<IconExample />} />
       <Route path="/image" element={<ImageExample />} />
       <Route path="/overlay" element={<OverlayExample />} />
+      <Route path="/popup" element={<PopupExample />} />
       <Route path="/style" element={<StyleExample />} />
     </Routes>
   );

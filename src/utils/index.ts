@@ -6,5 +6,4 @@ export * from './format';
 export * from './style';
 export * from './constant';
 export * from './validate';
-// export * from './interceptor';
-// export * from './with-install';
+export * from './interceptor';

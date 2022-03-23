@@ -7,5 +7,6 @@ export * from './col';
 export * from './icon';
 export * from './image';
 export * from './overlay'
+export * from './popup'
 export * from './locale';
 export * from './row';
