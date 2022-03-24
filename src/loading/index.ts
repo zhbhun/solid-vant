@@ -1,1 +1,1 @@
-export type LoadingType = 'circular' | 'spinner';
+export * from './Loading';

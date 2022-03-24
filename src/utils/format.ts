@@ -8,6 +8,18 @@ export function addUnit(value?: string | number): string | undefined {
   return undefined;
 }
 
+export function getSizeStyle(
+  originSize?: string | number
+): JSX.CSSProperties | undefined {
+  if (isDef(originSize)) {
+    const size = addUnit(originSize);
+    return {
+      width: size,
+      height: size,
+    };
+  }
+}
+
 export function getZIndexStyle(zIndex?: string | number) {
   const style: JSX.CSSProperties = {};
   if (zIndex !== undefined) {

@@ -6,6 +6,7 @@ export * from './config-provider';
 export * from './col';
 export * from './icon';
 export * from './image';
+export * from './loading';
 export * from './overlay'
 export * from './popup'
 export * from './locale';
