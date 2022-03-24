@@ -1,7 +1,7 @@
 import type { Component } from "solid-js";
 import { useTranslate } from "../../utils/use-translate";
 import DemoBlock from "../../components/DemoBlock";
-import "./index.scss";
+import "./index.less";
 
 const t = useTranslate({
   "zh-CN": {

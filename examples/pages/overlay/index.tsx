@@ -2,7 +2,7 @@ import { createSignal, type Component } from 'solid-js';
 import { Button, Overlay } from 'solid-vant/index';
 import { useTranslate } from '../../utils/use-translate';
 import DemoBlock from '../../components/DemoBlock';
-import './index.scss';
+import './index.less';
 
 const t = useTranslate({
   'zh-CN': {

@@ -1,13 +1,13 @@
-@import './var.scss';
+@import './var.less';
 
 :root {
-  --van-popup-background-color: #{$popup-background-color};
-  --van-popup-transition: #{$popup-transition};
-  --van-popup-round-border-radius: #{$popup-round-border-radius};
-  --van-popup-close-icon-size: #{$popup-close-icon-size};
-  --van-popup-close-icon-color: #{$popup-close-icon-color};
-  --van-popup-close-icon-margin: #{$popup-close-icon-margin};
-  --van-popup-close-icon-z-index: #{$popup-close-icon-z-index};
+  --van-popup-background-color: @popup-background-color;
+  --van-popup-transition: @popup-transition;
+  --van-popup-round-border-radius: @popup-round-border-radius;
+  --van-popup-close-icon-size: @popup-close-icon-size;
+  --van-popup-close-icon-color: @popup-close-icon-color;
+  --van-popup-close-icon-margin: @popup-close-icon-margin;
+  --van-popup-close-icon-z-index: @popup-close-icon-z-index;
 }
 
 .van {

@@ -1,13 +1,13 @@
-@import './var.scss';
+@import './var.less';
 
 :root {
-  --van-image-placeholder-text-color: #{$image-placeholder-text-color};
-  --van-image-placeholder-font-size: #{$image-placeholder-font-size};
-  --van-image-placeholder-background-color: #{$image-placeholder-background-color};
-  --van-image-loading-icon-size: #{$image-loading-icon-size};
-  --van-image-loading-icon-color: #{$image-loading-icon-color};
-  --van-image-error-icon-size: #{$image-error-icon-size};
-  --van-image-error-icon-color: #{$image-error-icon-color};
+  --van-image-placeholder-text-color: @image-placeholder-text-color;
+  --van-image-placeholder-font-size: @image-placeholder-font-size;
+  --van-image-placeholder-background-color: @image-placeholder-background-color;
+  --van-image-loading-icon-size: @image-loading-icon-size;
+  --van-image-loading-icon-color: @image-loading-icon-color;
+  --van-image-error-icon-size: @image-error-icon-size;
+  --van-image-error-icon-color: @image-error-icon-color;
 }
 
 .van-image {

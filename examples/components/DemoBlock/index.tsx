@@ -1,6 +1,6 @@
 import type { Component, JSX } from 'solid-js';
 import { Match, Show, Switch } from 'solid-js/web';
-import './index.scss';
+import './index.less';
 
 export interface DemoBlockProps extends JSX.HTMLAttributes<any> {
   title?: string;

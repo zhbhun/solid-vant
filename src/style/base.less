@@ -2,28 +2,28 @@
  * Entry of basic styles
  */
 
-@import './var.scss';
-@import './css-variables.scss';
-@import './normalize.scss';
-@import './animation.scss';
-@import './mixins/clearfix.scss';
-@import './mixins/ellipsis.scss';
-@import './mixins/hairline.scss';
+@import './var.less';
+@import './css-variables.less';
+@import './normalize.less';
+@import './animation.less';
+@import './mixins/clearfix.less';
+@import './mixins/ellipsis.less';
+@import './mixins/hairline.less';
 
 .van-clearfix {
-  @include clearfix();
+  .clearfix();
 }
 
 .van-ellipsis {
-  @include ellipsis();
+  .ellipsis();
 }
 
 .van-multi-ellipsis--l2 {
-  @include multi-ellipsis(2);
+  .multi-ellipsis(2);
 }
 
 .van-multi-ellipsis--l3 {
-  @include multi-ellipsis(3);
+  .multi-ellipsis(3);
 }
 
 .van-safe-area-bottom {
@@ -41,7 +41,7 @@
 
 [class*='van-hairline'] {
   &::after {
-    @include hairline();
+    .hairline();
   }
 }
 
@@ -57,29 +57,29 @@
   }
 
   &--top::after {
-    border-top-width: $border-width-base;
+    border-top-width: @border-width-base;
   }
 
   &--left::after {
-    border-left-width: $border-width-base;
+    border-left-width: @border-width-base;
   }
 
   &--right::after {
-    border-right-width: $border-width-base;
+    border-right-width: @border-width-base;
   }
 
   &--bottom::after {
-    border-bottom-width: $border-width-base;
+    border-bottom-width: @border-width-base;
   }
 
   &,
   &-unset {
     &--top-bottom::after {
-      border-width: $border-width-base 0;
+      border-width: @border-width-base 0;
     }
   }
 
   &--surround::after {
-    border-width: $border-width-base;
+    border-width: @border-width-base;
   }
 }

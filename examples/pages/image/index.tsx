@@ -3,7 +3,7 @@ import { For } from 'solid-js/web';
 import { Col, Image, Row } from 'solid-vant/index';
 import { useTranslate } from '../../utils/use-translate';
 import DemoBlock from '../../components/DemoBlock';
-import './index.scss';
+import './index.less';
 
 const t = useTranslate({
   'zh-CN': {

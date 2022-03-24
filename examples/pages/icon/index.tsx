@@ -4,7 +4,7 @@ import { Col, Icon, Row } from 'solid-vant/index';
 import icons from '@vant/icons';
 import { useTranslate } from '../../utils/use-translate';
 import DemoBlock from '../../components/DemoBlock';
-import './index.scss';
+import './index.less';
 
 // from https://30secondsofcode.org
 function copyToClipboard(str: string) {

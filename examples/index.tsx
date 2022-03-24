@@ -1,8 +1,8 @@
 /* @refresh reload */
 import { render } from "solid-js/web";
 import { Router } from "solid-app-router";
-import "solid-vant/index.scss"
-import "./index.scss";
+import "solid-vant/index.less"
+import "./index.less";
 import App from "./App";
 
 render(
