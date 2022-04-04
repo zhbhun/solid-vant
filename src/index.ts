@@ -7,7 +7,8 @@ export * from './col';
 export * from './icon';
 export * from './image';
 export * from './loading';
+export * from './locale';
 export * from './overlay'
 export * from './popup'
-export * from './locale';
+export * from './toast'
 export * from './row';

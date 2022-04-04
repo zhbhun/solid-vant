@@ -28,7 +28,7 @@ import { Icon } from '../icon';
 import { Overlay } from '../overlay';
 import { PopupPosition, PopupCloseIconPosition } from './types';
 
-export interface PopupBaseProps extends JSX.HTMLAttributes<any> {
+export interface PopupBaseProps {
   // whether to show popup
   show?: boolean;
   // z-index
@@ -59,7 +59,6 @@ export interface PopupBaseProps extends JSX.HTMLAttributes<any> {
 export const defaultPopupBaseProps = {
   overlay: true,
   lockScroll: true,
-  lazyRender: true,
   closeOnClickOverlay: true,
 };
 
@@ -72,14 +71,44 @@ export interface PopupProps extends PopupBaseProps {
   closeOnPopstate?: boolean;
   closeIconPosition?: PopupCloseIconPosition;
   safeAreaInsetBottom?: boolean;
-  onClick?: JSX.EventHandlerUnion<HTMLElement, MouseEvent>;
   onClickOverlay?: JSX.EventHandlerUnion<HTMLElement, MouseEvent>;
   onClickCloseIcon?: JSX.EventHandlerUnion<HTMLElement, MouseEvent>;
   onOpen?: CustomEventHandlerUnion;
   onClose?: CustomEventHandlerUnion;
   onOpened?: CustomEventHandlerUnion;
   onClosed?: CustomEventHandlerUnion;
+  onUpdateShow?: CustomEventHandlerUnion<boolean>;
 }
+
+export const popupPropKeys: (keyof PopupProps)[] = [
+  'show',
+  'zIndex',
+  'overlay',
+  'overlayContent',
+  'duration',
+  'teleport',
+  'lockScroll',
+  'beforeClose',
+  'overlayStyle',
+  'overlayClass',
+  'transitionAppear',
+  'closeOnClickOverlay',
+  'round',
+  'position',
+  'closeIcon',
+  'closeable',
+  'transition',
+  'closeOnPopstate',
+  'closeIconPosition',
+  'safeAreaInsetBottom',
+  'onClickOverlay',
+  'onClickCloseIcon',
+  'onOpen',
+  'onClose',
+  'onOpened',
+  'onClosed',
+  'onUpdateShow',
+];
 
 export const defaultPopupProps = {
   ...defaultPopupBaseProps,
@@ -88,41 +117,17 @@ export const defaultPopupProps = {
   closeIconPosition: 'top-right',
 };
 
+export interface PopupHTMLProps extends JSX.HTMLAttributes<any>, PopupProps {}
+
 const [name, bem] = createNamespace('popup');
 
 let globalZIndex = 2000;
 
-export const Popup: Component<PopupProps> = (prop) => {
-  const [_props, attrs] = splitProps(mergeProps(defaultPopupProps, prop), [
-    'show',
-    'zIndex',
-    'overlay',
-    'overlayContent',
-    'duration',
-    'teleport',
-    'lockScroll',
-    'lazyRender',
-    'beforeClose',
-    'overlayStyle',
-    'overlayClass',
-    'transitionAppear',
-    'closeOnClickOverlay',
-    'round',
-    'position',
-    'closeIcon',
-    'closeable',
-    'transition',
-    'closeOnPopstate',
-    'closeIconPosition',
-    'safeAreaInsetBottom',
-    'onClick',
-    'onClickOverlay',
-    'onClickCloseIcon',
-    'onOpen',
-    'onClose',
-    'onOpened',
-    'onClosed',
-  ]);
+export const Popup: Component<PopupHTMLProps> = (prop) => {
+  const [_props, attrs] = splitProps(
+    mergeProps(defaultPopupProps, prop),
+    popupPropKeys
+  );
 
   let opened: boolean;
   let shouldReopen: boolean;
@@ -165,6 +170,7 @@ export const Popup: Component<PopupProps> = (prop) => {
         done() {
           opened = false;
           callCustomEventHandler(_props.onClose);
+          callCustomEventHandler(_props.onUpdateShow, false);
         },
       });
     }
@@ -234,6 +240,7 @@ export const Popup: Component<PopupProps> = (prop) => {
               [_props.position]: _props.position,
             }),
             { 'van-safe-area-bottom': _props.safeAreaInsetBottom },
+            attrs.class
           ])}
         >
           {attrs.children}

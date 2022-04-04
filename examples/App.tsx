@@ -13,6 +13,7 @@ const ImageExample = lazy(() => import('./pages/image'));
 const OverlayExample = lazy(() => import('./pages/overlay'));
 const PopupExample = lazy(() => import('./pages/popup'));
 const StyleExample = lazy(() => import('./pages/style'));
+const ToastExample = lazy(() => import('./pages/toast'));
 
 const App: Component = () => {
   return (
@@ -28,6 +29,7 @@ const App: Component = () => {
       <Route path="/overlay" element={<OverlayExample />} />
       <Route path="/popup" element={<PopupExample />} />
       <Route path="/style" element={<StyleExample />} />
+      <Route path="/toast" element={<ToastExample />} />
     </Routes>
   );
 };

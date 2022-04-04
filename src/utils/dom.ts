@@ -26,28 +26,28 @@ export function callEventHandler(
   }
 }
 
-export interface CustomEventHandler<E = any> {
-  (e?: E): void;
+export interface CustomEventHandler<E = void> {
+  (e: E): void;
 }
 
-export interface CustomBoundEventHandler<E = any> {
-  0: (data?: any, e?: E) => void;
+export interface CustomBoundEventHandler<E = void> {
+  0: (data: any, e: E) => void;
   1: any;
 }
 
-export type CustomEventHandlerUnion<E = any> =
+export type CustomEventHandlerUnion<E = void> =
   | CustomEventHandler<E>
   | CustomBoundEventHandler<E>;
 
-export function callCustomEventHandler<E = any>(
+export function callCustomEventHandler<E = void>(
   eventHandler?: CustomEventHandlerUnion<E>,
   event?: E
 ) {
   if (eventHandler) {
     if (typeof eventHandler === 'function') {
-      eventHandler(event);
+      eventHandler(event as any);
     } else if (typeof eventHandler[0] === 'function') {
-      eventHandler[0](eventHandler[1], event);
+      eventHandler[0](eventHandler[1], event as any);
     }
   }
 }
