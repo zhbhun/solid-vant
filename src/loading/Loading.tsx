@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import type { Component, JSX } from 'solid-js';
 import { createMemo, mergeProps, splitProps } from 'solid-js';
 import { Show } from 'solid-js/web';
@@ -51,7 +52,13 @@ export const Loading: Component<LoadingProps> = (prop) => {
   );
 
   return (
-    <div {...attrs} class={bem([_props.type, { vertical: _props.vertical }])}>
+    <div
+      {...attrs}
+      class={classNames(
+        bem([_props.type, { vertical: _props.vertical }]),
+        attrs.class
+      )}
+    >
       <span class={bem('spinner', _props.type)} style={spinnerStyle()}>
         <Show when={_props.type === 'spinner'} fallback={<CircularIcon />}>
           {<SpinIcon />}
