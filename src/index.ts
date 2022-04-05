@@ -10,6 +10,7 @@ export * from './loading';
 export * from './locale';
 export * from './overlay'
 export * from './popup'
+export * from './rate'
 export * from './swtich'
 export * from './toast'
 export * from './row';

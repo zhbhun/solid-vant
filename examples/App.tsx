@@ -12,6 +12,7 @@ const LoadingExample = lazy(() => import('./pages/loading'));
 const ImageExample = lazy(() => import('./pages/image'));
 const OverlayExample = lazy(() => import('./pages/overlay'));
 const PopupExample = lazy(() => import('./pages/popup'));
+const RateExample = lazy(() => import('./pages/rate'));
 const StyleExample = lazy(() => import('./pages/style'));
 const SwitchExample = lazy(() => import('./pages/switch'));
 const ToastExample = lazy(() => import('./pages/toast'));
@@ -29,6 +30,7 @@ const App: Component = () => {
       <Route path="/loading" element={<LoadingExample />} />
       <Route path="/overlay" element={<OverlayExample />} />
       <Route path="/popup" element={<PopupExample />} />
+      <Route path="/rate" element={<RateExample />} />
       <Route path="/style" element={<StyleExample />} />
       <Route path="/switch" element={<SwitchExample />} />
       <Route path="/toast" element={<ToastExample />} />
