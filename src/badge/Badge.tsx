@@ -1,10 +1,10 @@
-import classNames from "classnames";
-import type { Component, JSX } from "solid-js";
-import { createMemo, mergeProps, splitProps } from "solid-js";
-import { Dynamic, Show } from "solid-js/web";
-import { addUnit, isDef, mergeStyles } from "../utils";
-import { createNamespace } from "../utils/create";
-import { BadgePosition } from "./types";
+import classNames from 'classnames';
+import type { Component, JSX } from 'solid-js';
+import { createMemo, mergeProps, splitProps } from 'solid-js';
+import { Dynamic, Show } from 'solid-js/web';
+import { addUnit, isDef, mergeStyles } from '../utils';
+import { createNamespace } from '../utils/create';
+import { BadgePosition } from './types';
 
 export interface BadgeProps extends JSX.HTMLAttributes<any> {
   dot?: boolean;
@@ -19,38 +19,38 @@ export interface BadgeProps extends JSX.HTMLAttributes<any> {
 }
 
 export const defaultBadgeProps: BadgeProps = {
-  tag: "div",
+  tag: 'div',
   dot: false,
   showZero: true,
-  position: "top-right",
+  position: 'top-right',
 };
 
-const [name, bem] = createNamespace("badge");
+const [name, bem] = createNamespace('badge');
 
 export const Badge: Component<BadgeProps> = (props) => {
   const [_props, attrs] = splitProps(mergeProps(defaultBadgeProps, props), [
-    "dot",
-    "max",
-    "tag",
-    "color",
-    "offset",
-    "content",
-    "showZero",
-    "position",
-    "children",
+    'dot',
+    'max',
+    'tag',
+    'color',
+    'offset',
+    'content',
+    'showZero',
+    'position',
+    'children',
   ]);
   const hasContent = createMemo(() => {
-    if (typeof _props.content === "number") {
+    if (typeof _props.content === 'number') {
       return _props.showZero ? true : _props.content !== 0;
-    } else if (typeof _props.content === "string") {
-      return _props.content !== "";
+    } else if (typeof _props.content === 'string') {
+      return _props.content !== '';
     }
     return isDef(_props.content);
   });
   const renderContent = createMemo(() => {
     if (!_props.dot && hasContent()) {
       if (
-        typeof _props.content === "number" &&
+        typeof _props.content === 'number' &&
         isDef(_props.max) &&
         _props.content > _props.max
       ) {
@@ -64,7 +64,7 @@ export const Badge: Component<BadgeProps> = (props) => {
   const style = createMemo(() => {
     const style: JSX.CSSProperties = _props.color
       ? {
-          background: _props.color,
+          'background-color': _props.color,
         }
       : {};
 
@@ -73,14 +73,14 @@ export const Badge: Component<BadgeProps> = (props) => {
       if (_props.children) {
         style.top = addUnit(y);
 
-        if (typeof x === "number") {
+        if (typeof x === 'number') {
           style.right = addUnit(-x);
         } else {
-          style.right = x.startsWith("-") ? x.replace("-", "") : `-${x}`;
+          style.right = x.startsWith('-') ? x.replace('-', '') : `-${x}`;
         }
       } else {
-        style.marginTop = addUnit(y);
-        style.marginLeft = addUnit(x);
+        style['margin-top'] = addUnit(y);
+        style['margin-left'] = addUnit(x);
       }
     }
 
@@ -111,7 +111,7 @@ export const Badge: Component<BadgeProps> = (props) => {
       <Dynamic
         {...attrs}
         component={_props.tag}
-        class={classNames(bem("wrapper"), attrs.class)}
+        class={classNames(bem('wrapper'), attrs.class)}
       >
         {_props.children}
         {renderBadge()}

@@ -5,7 +5,8 @@ import { createNamespace, isDef } from '../utils';
 import { Icon } from '../icon';
 import { CellSize, CellArrowDirection } from './types';
 
-export interface CellProps extends Omit<JSX.HTMLAttributes<any>, 'title'> {
+export interface CellProps
+  extends Omit<JSX.HTMLAttributes<HTMLDivElement>, 'title'> {
   icon?: JSX.Element;
   size?: CellSize;
   title?: JSX.Element;
@@ -30,7 +31,7 @@ export const defaultCellProps = {
   border: true,
 };
 
-const [name, bem] = createNamespace('cell');
+const [, bem] = createNamespace('cell');
 
 export const Cell: Component<CellProps> = (props) => {
   const [_props, attrs] = splitProps(mergeProps(defaultCellProps, props), [
@@ -61,7 +62,6 @@ export const Cell: Component<CellProps> = (props) => {
       );
     }
   });
-
   const renderTitle = createMemo(() => {
     if (isDef(_props.title)) {
       return (
@@ -75,7 +75,6 @@ export const Cell: Component<CellProps> = (props) => {
       );
     }
   });
-
   const renderValue = createMemo(() => {
     const content = _props.value || attrs.children;
 
@@ -92,7 +91,6 @@ export const Cell: Component<CellProps> = (props) => {
       );
     }
   });
-
   const renderLeftIcon = createMemo(() => {
     if (_props.icon) {
       if (typeof _props.icon === 'string') {
@@ -101,7 +99,6 @@ export const Cell: Component<CellProps> = (props) => {
       return _props.icon;
     }
   });
-
   const renderRightIcon = createMemo(() => {
     if (_props.rightIcon) {
       return _props.rightIcon;
@@ -114,7 +111,6 @@ export const Cell: Component<CellProps> = (props) => {
       return <Icon name={name} class={bem('right-icon')} />;
     }
   });
-
   return (
     <div
       {...attrs}

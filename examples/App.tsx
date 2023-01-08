@@ -1,39 +1,69 @@
-import { lazy } from 'solid-js';
+import { createMemo, lazy } from 'solid-js';
 import { type Component } from 'solid-js';
 import { Routes, Route } from 'solid-app-router';
 
-const BadgeExample = lazy(() => import('./pages/badge'));
-const ButtonExample = lazy(() => import('./pages/button'));
-const CellExample = lazy(() => import('./pages/cell'));
-const ConfigProviderExample = lazy(() => import('./pages/config-provider'));
-const ColExample = lazy(() => import('./pages/col'));
-const IconExample = lazy(() => import('./pages/icon'));
-const LoadingExample = lazy(() => import('./pages/loading'));
-const ImageExample = lazy(() => import('./pages/image'));
-const OverlayExample = lazy(() => import('./pages/overlay'));
-const PopupExample = lazy(() => import('./pages/popup'));
-const RateExample = lazy(() => import('./pages/rate'));
-const StyleExample = lazy(() => import('./pages/style'));
-const SwitchExample = lazy(() => import('./pages/switch'));
-const ToastExample = lazy(() => import('./pages/toast'));
+function LazyRoute(props: {
+  path: string;
+  component: ReturnType<typeof lazy>;
+}) {
+  const element = createMemo(() => {
+    const { component: Comp } = props;
+    return <Comp />;
+  });
+  return <Route path={props.path} element={element} />;
+}
 
 const App: Component = () => {
   return (
     <Routes>
-      <Route path="/badge" element={<BadgeExample />} />
-      <Route path="/button" element={<ButtonExample />} />
-      <Route path="/cell" element={<CellExample />} />
-      <Route path="/config-provider" element={<ConfigProviderExample />} />
-      <Route path="/col" element={<ColExample />} />
-      <Route path="/icon" element={<IconExample />} />
-      <Route path="/image" element={<ImageExample />} />
-      <Route path="/loading" element={<LoadingExample />} />
-      <Route path="/overlay" element={<OverlayExample />} />
-      <Route path="/popup" element={<PopupExample />} />
-      <Route path="/rate" element={<RateExample />} />
-      <Route path="/style" element={<StyleExample />} />
-      <Route path="/switch" element={<SwitchExample />} />
-      <Route path="/toast" element={<ToastExample />} />
+      <LazyRoute
+        path="/badge"
+        component={lazy(() => import('./pages/badge'))}
+      />
+      <LazyRoute
+        path="/button"
+        component={lazy(() => import('./pages/button'))}
+      />
+      <LazyRoute path="/cell" component={lazy(() => import('./pages/cell'))} />
+      <LazyRoute
+        path="/config-provider"
+        component={lazy(() => import('./pages/config-provider'))}
+      />
+      <LazyRoute path="/col" component={lazy(() => import('./pages/col'))} />
+      <LazyRoute path="/icon" component={lazy(() => import('./pages/icon'))} />
+      <LazyRoute
+        path="/image"
+        component={lazy(() => import('./pages/image'))}
+      />
+      <LazyRoute
+        path="/layout"
+        component={lazy(() => import('./pages/layout'))}
+      />
+      <LazyRoute
+        path="/loading"
+        component={lazy(() => import('./pages/loading'))}
+      />
+      <LazyRoute
+        path="/overlay"
+        component={lazy(() => import('./pages/overlay'))}
+      />
+      <LazyRoute
+        path="/popup"
+        component={lazy(() => import('./pages/popup'))}
+      />
+      <LazyRoute path="/rate" component={lazy(() => import('./pages/rate'))} />
+      <LazyRoute
+        path="/style"
+        component={lazy(() => import('./pages/style'))}
+      />
+      <LazyRoute
+        path="/switch"
+        component={lazy(() => import('./pages/switch'))}
+      />
+      <LazyRoute
+        path="/toast"
+        component={lazy(() => import('./pages/toast'))}
+      />
     </Routes>
   );
 };

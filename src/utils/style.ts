@@ -1,5 +1,5 @@
-import type { JSX } from "solid-js";
-import { isDef } from "./validate";
+import type { JSX } from 'solid-js';
+import { isDef } from './validate';
 
 export type Argument = undefined | string | JSX.CSSProperties | Argument[];
 
@@ -10,12 +10,12 @@ export function mergeStyles(...args: Argument[]): JSX.CSSProperties {
     if (isDef(arg)) {
       if (Array.isArray(arg)) {
         Object.assign(result, mergeStyles(arg));
-      } else if (typeof arg === "string") {
+      } else if (typeof arg === 'string') {
         Object.assign(
           result,
-          arg.split(";").reduce((rcc: JSX.CSSProperties, item: string) => {
-            const [key, value] = item.split(":");
-            rcc[key.trim()] = value.trim();
+          arg.split(';').reduce((rcc: JSX.CSSProperties, item: string) => {
+            const [key, value] = item.split(':');
+            rcc[key.trim() as any] = value.trim();
             return rcc;
           }, {} as JSX.CSSProperties)
         );

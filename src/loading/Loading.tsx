@@ -15,7 +15,7 @@ export interface LoadingProps extends JSX.HTMLAttributes<any> {
   textColor?: string;
 }
 
-export const defaultLoadingProps = {
+export const loadingProps = {
   type: 'circular',
 };
 
@@ -38,7 +38,7 @@ const CircularIcon: Component = () => (
 );
 
 export const Loading: Component<LoadingProps> = (prop) => {
-  const [_props, attrs] = splitProps(mergeProps(defaultLoadingProps, prop), [
+  const [_props, attrs] = splitProps(mergeProps(loadingProps, prop), [
     'size',
     'type',
     'color',
