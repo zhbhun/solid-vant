@@ -52,6 +52,7 @@ const App: Component = () => {
         component={lazy(() => import('./pages/popup'))}
       />
       <LazyRoute path="/rate" component={lazy(() => import('./pages/rate'))} />
+      <LazyRoute path="/space" component={lazy(() => import('./pages/space'))} />
       <LazyRoute
         path="/style"
         component={lazy(() => import('./pages/style'))}

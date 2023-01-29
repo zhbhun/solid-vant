@@ -11,6 +11,7 @@ export * from './locale';
 export * from './overlay'
 export * from './popup'
 export * from './rate'
+export * from './row';
+export * from './space'
 export * from './swtich'
 export * from './toast'
-export * from './row';
