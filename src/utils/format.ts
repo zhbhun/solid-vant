@@ -23,7 +23,7 @@ export function getSizeStyle(
 export function getZIndexStyle(zIndex?: string | number) {
   const style: JSX.CSSProperties = {};
   if (zIndex !== undefined) {
-    style.zIndex = +zIndex;
+    style['z-index'] = +zIndex;
   }
   return style;
 }

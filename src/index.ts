@@ -13,5 +13,6 @@ export * from './popup'
 export * from './rate'
 export * from './row';
 export * from './space'
+export * from './slider'
 export * from './swtich'
 export * from './toast'
